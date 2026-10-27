@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: cm-controle-limpeza
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cm-limpeza-db
+          property: connectionString
+      - key: APP_USERNAME
+        value: funcionarios
+      - key: APP_PASSWORD
+        sync: false
+databases:
+  - name: cm-limpeza-db
+    plan: free
+
