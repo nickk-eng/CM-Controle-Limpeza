@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Casa de Madeira | Controle de limpeza</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <span class="marca">CM</span>
+        <div>
+          <p class="sobretitulo">RESTAURANTE</p>
+          <h1>Casa de Madeira</h1>
+        </div>
+        <button id="sair" class="secundario" type="button">Sair</button>
+      </div>
+    </header>
+    <main class="container">
+      <div class="introducao">
+        <p class="sobretitulo">CUIDADO EM CADA DETALHE</p>
+        <h2>Controle de limpeza</h2>
+        <p>
+          Organize a rotina, acompanhe os responsáveis e mantenha tudo em dia.
+        </p>
+      </div>
+      <section class="painel">
+        <label>Data do checklist<input id="dia" type="date" required /></label>
+      </section>
+      <section class="resumo" aria-label="Resumo do dia">
+        <article>
+          <span>Tarefas do dia</span><strong id="total">0</strong>
+        </article>
+        <article>
+          <span>Concluídas</span><strong id="concluidas">0</strong>
+        </article>
+        <article>
+          <span>Pendentes</span><strong id="pendentes">0</strong>
+        </article>
+      </section>
+      <section class="painel">
+        <div class="cabecalho-lista">
+          <h3>Progresso diário</h3>
+          <strong id="percentual">0%</strong>
+        </div>
+        <progress
+          id="progresso"
+          max="100"
+          value="0"
+          aria-label="Porcentagem concluída"
+        ></progress>
+        <p id="progresso-texto">Nenhuma tarefa para este dia.</p>
+      </section>
+      <section class="painel">
+        <h3 id="titulo-formulario">Cadastrar tarefa</h3>
+        <form id="formulario">
+          <div class="campos">
+            <label
+              >Tarefa<input
+                id="nome"
+                required
+                maxlength="120"
+                placeholder="Ex.: Higienizar bancadas" /></label
+            ><label
+              >Responsável<input
+                id="responsavel"
+                required
+                maxlength="80"
+                placeholder="Nome" /></label
+            ><label
+              >Setor<input
+                id="setor"
+                required
+                maxlength="80"
+                placeholder="Ex.: Cozinha" /></label
+            ><label>Data<input id="data" type="date" required /></label
+            ><label
+              >Horário previsto<input id="horario" type="time" required
+            /></label>
+          </div>
+          <div class="acoes">
+            <button id="salvar">Cadastrar tarefa</button
+            ><button type="button" id="cancelar" class="secundario" hidden>
+              Cancelar edição
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="painel">
+        <div class="cabecalho-lista">
+          <h3>Checklist do dia</h3>
+          <button id="exportar" class="secundario">Exportar CSV</button>
+        </div>
+        <div class="filtros">
+          <label
+            >Buscar tarefa, responsável ou setor<input
+              id="busca"
+              type="search"
+              placeholder="Digite para buscar..." /></label
+          ><label
+            >Situação<select id="filtro">
+              <option value="todas">Todas</option>
+              <option value="pendentes">Pendentes</option>
+              <option value="concluidas">Concluídas</option>
+            </select></label
+          >
+        </div>
+        <div class="tabela">
+          <table>
+            <thead>
+              <tr>
+                <th>Concluir</th>
+                <th>Tarefa / setor</th>
+                <th>Responsável</th>
+                <th>Horário</th>
+                <th>Situação</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="lista"></tbody>
+          </table>
+        </div>
+        <p id="vazio" class="vazio">Nenhuma tarefa neste dia.</p>
+      </section>
+      <p id="mensagem" role="status" aria-live="polite"></p>
+      <footer>
+        Projeto de extensão • Casa de Madeira<br />Os registros ficam salvos no
+        banco de dados do restaurante.
+      </footer>
+    </main>
+  </body>
+</html>
